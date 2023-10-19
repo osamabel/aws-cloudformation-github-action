@@ -13,17 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Create AWS Configuration Directory
-        run: mkdir -p $HOME/.aws
-      
       - name: Configure AWS credentials      
         run: |
-          echo "[default]
-          aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}" > $HOME/.aws/credentials
-
-          echo "[default]
-          region = us-east-1" > $HOME/.aws/config
+          echo "aws_access_key_id= >> ${{ secrets.AWS_ACCESS_KEY_ID }},  aws_secret_access_key= >> ${{ secrets.AWS_SECRET_ACCESS_KEY }}"
 
       - name: Create CloudFormation stack
         run: |
