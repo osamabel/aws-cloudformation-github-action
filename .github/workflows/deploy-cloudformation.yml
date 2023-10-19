@@ -15,8 +15,8 @@ jobs:
 
       - name: Configure AWS credentials      
         run: |
-          echo aws_access_key_id= >> ${{ secrets.AWS_ACCESS_KEY_ID }},  aws_secret_access_key= >> ${{ secrets.AWS_SECRET_ACCESS_KEY }} , r=> ${{ env.AWS_REGION }}
-          
+          echo "aws_access_key_id= >> ${{ secrets.AWS_ACCESS_KEY_ID }},  aws_secret_access_key= >> ${{ secrets.AWS_SECRET_ACCESS_KEY }} , r=> ${{ env.AWS_REGION }}"
+
       - name: Create CloudFormation stack
         run: |
           aws cloudformation create-stack --stack-name osamadeploy \
