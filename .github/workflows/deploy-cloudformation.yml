@@ -30,7 +30,7 @@ jobs:
       - name: Create CloudFormation stack
         run: |
           aws cloudformation create-stack --stack-name osamadeploy \
-          --template-body workshop4.yaml \
+          --template-body file://$GITHUB_WORKSPACE/workshop4.yaml \
           --region us-east-1 \
           --capabilities CAPABILITY_NAMED_IAM
 
