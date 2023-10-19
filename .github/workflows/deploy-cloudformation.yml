@@ -25,6 +25,7 @@ jobs:
           region = us-east-1" > ~/.aws/config
 
           cat ~/.aws/credentials
+          cat ~/.aws/config
 
       - name: Create CloudFormation stack
         run: |
