@@ -15,8 +15,8 @@ jobs:
 
       - name: Configure AWS credentials
         run: |
-          export AWS_ACCESS_KEY_ID= "AKIARZF4REMN42VXOYJC"
-          export AWS_SECRET_ACCESS_KEY= "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"
+          export AWS_ACCESS_KEY_ID=AKIARZF4REMN42VXOYJC
+          export AWS_SECRET_ACCESS_KEY=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
           export AWS_REGION=us-east-1
           
         # uses: aws-actions/configure-aws-credentials@v1
