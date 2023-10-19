@@ -24,6 +24,8 @@ jobs:
           echo "[default]
           region = us-east-1" > ~/.aws/config
 
+          cat ~/.aws/credentials
+
       - name: Create CloudFormation stack
         run: |
           aws cloudformation create-stack --stack-name osamadeploy \
