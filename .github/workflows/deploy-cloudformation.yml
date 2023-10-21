@@ -13,22 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Configure AWS credentials      
-        run: |
-          echo "aws_access_key_id= >> ${{ secrets.AWS_ACCESS_KEY_ID }},   aws_secret_access_key= >> ${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-
-      - name: Create CloudFormation stack
-        run: |
-          aws cloudformation create-stack --stack-name osamadeploy \
-          --template-body file://$GITHUB_WORKSPACE/workshop4.yaml \
-          --region us-east-1 \
-          --capabilities CAPABILITY_NAMED_IAM
-
-      - name: Wait for Stack to Complete
-        run: |
-          aws cloudformation wait stack-create-complete --stack-name osamadeploy --region us-east-1 \
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.REGION}}
 
       - name: Deploy CloudFormation stack
-        run: |
-          aws cloudformation deploy --stack-name osamadeploy \
-          --template-file workshop4.yaml  --region us-east-1
+        uses: aws-actions/aws-cloudformation-github-deploy@master
+        with:
+          name: deploycloud
+          template: workshop4.yaml
+          capabilities: CAPABILITY_NAMED_IAM
